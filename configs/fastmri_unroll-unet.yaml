@@ -1,0 +1,118 @@
+max_steps: epoch
+with_tracking: True
+
+# data related
+which_dataset: "fastmrimc"
+which_data: "brain"
+root: ""
+batch_size: 8
+num_workers: 8
+x_type_train: "zfkspace"
+x_type_test: "zfkspace"
+data_norm_type: "avg"
+
+Naddtestset: 11
+
+test_data_common: &test_common
+  root: ""
+  batch_size: 1
+  x_type_train: "zfkspace"
+  x_type_test: "zfkspace"
+  data_norm_type: "avg"
+
+addtestset_config_0:
+  which_dataset: "fastmrimc"
+  which_data: "knee"
+  <<: *test_common
+
+addtestset_config_1:
+  which_dataset: "fastmrimc"
+  which_data: "brain"
+  <<: *test_common
+
+addtestset_config_2:
+  which_dataset: "fastmrimc"
+  which_data: "stanford2d"
+  <<: *test_common
+  data_norm_type: "volume_max"
+
+addtestset_config_3:
+  which_dataset: "fastmrimc"
+  which_data: "ccbrainax"
+  <<: *test_common
+
+addtestset_config_4:
+  which_dataset: "fastmrimc"
+  which_data: "ccbrainsag"
+  <<: *test_common
+
+addtestset_config_5:
+  which_dataset: "fastmrimc"
+  which_data: "m4rawgre"
+  <<: *test_common
+
+addtestset_config_6:
+  which_dataset: "fastmrimc"
+  which_data: "aheadaxe1"
+  <<: *test_common
+
+addtestset_config_7:
+  which_dataset: "fastmrimc"
+  which_data: "aheadaxe2"
+  <<: *test_common
+
+addtestset_config_8:
+  which_dataset: "fastmrimc"
+  which_data: "aheadaxe3"
+  <<: *test_common
+
+addtestset_config_9:
+  which_dataset: "fastmrimc"
+  which_data: "aheadaxe4"
+  <<: *test_common
+
+addtestset_config_10:
+  which_dataset: "fastmrimc"
+  which_data: "aheadaxe5"
+  <<: *test_common
+
+# model related
+recon_type: "unroll"
+Ncascade: 4
+dc_type: "soft"
+
+img_model_config:
+  model_type: "unet"
+  input_norm: True
+  coildim_type: "none"
+  use_res: False
+  Nf_unet: 60
+  Ndown: 4
+
+sen_model_config:
+  model_type: "unet"
+  input_norm: false
+  coildim_type: "as_batch"
+  use_res: False
+  use_coil_mask: True
+  smaps_const_init: true
+  Nf_unet: 30
+  Ndown: 4
+
+# train related
+loss_type_train: "mae"
+loss_type_eval: "mae"
+opt_type: "adam"
+lrs_type: "cos1"
+epochs: 30
+lr: 0.0003
+resume_from: ""
+continue_opt: False
+use_compile: True
+precision_type: "amp"
+accmu_steps: 1
+
+# test related
+escale: 10.0
+batch2plot: 10
+eval_use_amp: True

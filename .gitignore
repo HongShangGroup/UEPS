@@ -1,0 +1,27 @@
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.pkl
+*.log
+*.csv
+.idea
+
+# Ignore model weights
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+
+# Ignore domo data
+demo_data/
+*.h5
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore IDE files
+.vscode/
+.idea/

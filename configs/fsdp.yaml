@@ -1,0 +1,21 @@
+# fsdp2
+num_processes: 8
+gpu_ids: 0,1,2,3,4,5,6,7
+mixed_precision: bf16
+distributed_type: FSDP
+downcast_bf16: 'no'
+dynamo_backend: 'INDUCTOR' # 'INDUCTOR' 'NO'
+fsdp_config:
+  fsdp_version: 2
+  fsdp_reshard_after_forward: True
+  fsdp_mixed_precision_policy:
+    param_dtype: "bf16"
+    reduce_dtype: "bf16"
+    buffer_dtype: "fp32"
+  fsdp_auto_wrap_policy: TRANSFORMER_BASED_WRAP
+  fsdp_transformer_layer_cls_to_wrap: ViTLightBlock
+  fsdp_offload_params: False
+  fsdp_state_dict_type: SHARDED_STATE_DICT
+  fsdp_cpu_ram_efficient_loading: False
+  fsdp_activation_checkpointing: True
+use_cpu: False

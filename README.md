@@ -75,7 +75,7 @@ We host our pre-trained model weights and sample demo data on Zenodo to facilita
 1. Download the weights (`ckpt_pick.pth`) and place it in the `checkpoints/` directory.
 2. Download the demo data (`demo_data.zip`) and extract it into the `demo_data/` directory.
 
-[📥 Download weights and data from Zenodo](https://zenodo.org/records/19093602)
+[📥 Download weights and data from Zenodo](https://zenodo.org/records/19494819)
 
 ## ⭐ Citation
 If you find UEPS useful for your research or projects, we would greatly appreciate it if you could cite the following paper:

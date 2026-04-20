@@ -13,7 +13,7 @@ fsdp_config:
     reduce_dtype: "bf16"
     buffer_dtype: "fp32"
   fsdp_auto_wrap_policy: TRANSFORMER_BASED_WRAP
-  fsdp_transformer_layer_cls_to_wrap: ViTLightBlock
+  fsdp_transformer_layer_cls_to_wrap: ViTSparseBlock
   fsdp_offload_params: False
   fsdp_state_dict_type: SHARDED_STATE_DICT
   fsdp_cpu_ram_efficient_loading: False
